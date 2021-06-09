@@ -50,7 +50,6 @@ namespace CajaAhorro.CLIENTS
             }
             catch (Exception ex)
             {
-
                 throw;
             }
 

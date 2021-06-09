@@ -12,9 +12,8 @@ namespace CajaAhorro.ENTITY.Parametros
         public string user { get; set; }
         public string pass { get; set; }
 
-        public string proyecto { get; set; } = "CajaAhorro";
-        public string usertoken { get; set; } = "cesar_7391@outlook.com";
-        public string passwordtoken { get; set; } = "Inspiron5520?";
-
+        public string proyecto { get; set; }
+        public string usertoken { get; set; }
+        public string passwordtoken { get; set; }
     }
 }

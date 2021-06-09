@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CajaAhorro.WEBSERVICE.Clases;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -13,6 +14,9 @@ namespace CajaAhorro.WEBSERVICE
 
             // Rutas de API web
             config.MapHttpAttributeRoutes();
+
+            //AGREGADO
+            config.MessageHandlers.Add(new TokenValidation());
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

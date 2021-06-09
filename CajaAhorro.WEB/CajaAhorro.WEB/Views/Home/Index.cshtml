@@ -1,31 +1,96 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    Layout = null;
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Login</title>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <!-- CSS -->
+    <link href="~/Content/plugins/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/style/style_login.css" rel="stylesheet" />
+
+    <!-- JS -->
+    <script src="~/Content/plugins/js/jquery-3.1.1.min.js"></script>
+    <script src="~/Content/plugins/js/bootstrap.min.js"></script>
+    <script src="~/Content/plugins/sweetalert2/sweetalert2.all.js"></script>
+
+    <script>
+        var appURL = "@Url.Content("~/")";
+    </script>
+</head>
+<body>
+
+    <div class="login">
+        <form action="/" method="post">
+
+            <div class="col-md-12">
+                <img src="~/Content/img/panel/receive_cash_80px.png" alt="Alternate Text" class="logo" />
+            </div>
+            <br />
+
+            <div class="col-md-12">
+                <div class="text">Caja de Ahorro </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-row">
+                    <div class="input-data">
+                        <input type="text" name="txtuser" id="txtuser" required />
+                        <div class="underline"></div>
+                        <label>Usuario</label>
+                        <span id="msjuser"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-row">
+                    <div class="input-data">
+                        <input type="password" name="txtpassword" id="txtpassword" required />
+                        <div class="show-eye"><i class="fa fa-eye" id="faeye"></i></div>
+                        <div class="show-eye-slash"><i class="fa fa-eye-slash" id="faeyeslash"></i></div>
+                        <div class="underline"></div>
+                        <label>Contraseña</label>
+                        <span id="msjpassword"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <span class="msjerroracceso"></span>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-row">
+
+                    <button type="button" class="btn btn-primary btn-block btn-flat" id="btningresar">Iniciar Sesión</button>
+                </div>
+
+            </div>
+
+
+            <div class="col-md-12">
+                <div class="lbllogin">
+                    <span>¿No tienes una cuenta?</span>
+                    &nbsp;
+                    <span><a href="@Url.Action("Registro","Registro")">Registrarse</a></span>
+                    <br/><br/>
+                </div>
+            </div>
+
+        </form>
+
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+</body>
+</html>
+
+<!-- ENLAZAR ARCHIVOS JS-->
+<script type="text/javascript" src="~/Scripts/app/login.js"></script>
+<script type="text/javascript" src="~/Scripts/js/validaciones.js"></script>
+<script type="text/javascript" src="~/Scripts/js/global.js"></script>
