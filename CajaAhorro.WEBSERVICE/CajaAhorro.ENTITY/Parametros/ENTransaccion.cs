@@ -8,8 +8,8 @@ namespace CajaAhorro.ENTITY.Parametros
 {
     public class ENTransaccion
     {
-        public double monto { get; set; }
+        public double dinero { get; set; }
 
-        public int idcuenta { get; set; }
+        public int idusuario { get; set; }
     }
 }

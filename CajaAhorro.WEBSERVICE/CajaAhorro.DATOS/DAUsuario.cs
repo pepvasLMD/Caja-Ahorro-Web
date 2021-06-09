@@ -24,7 +24,7 @@ namespace CajaAhorro.DATOS
                     //Se llama al store procedure
                     SqlCommand cmd = new SqlCommand("usp_obtenerEstadoCuentaUsuario", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@idcuenta", paramss.idcuenta));
+                    cmd.Parameters.Add(new SqlParameter("@idusuario", paramss.idusuario));
 
                     //Ejecuta el SP
                     using (SqlDataReader rdr = cmd.ExecuteReader())
@@ -63,8 +63,78 @@ namespace CajaAhorro.DATOS
                     //Se llama al store procedure
                     SqlCommand cmd = new SqlCommand("usp_darAportacion", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@idcuenta", paramss.idcuenta));
-                    cmd.Parameters.Add(new SqlParameter("@monto", paramss.monto));
+                    cmd.Parameters.Add(new SqlParameter("@idusuario", paramss.idusuario));
+                    cmd.Parameters.Add(new SqlParameter("@dinero", paramss.dinero));
+
+                    //Ejecuta el SP
+                    using (SqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                        while (rdr.Read())
+                        {
+                            var result = new ResponseTransaccion();
+                            result.msg = Convert.ToString(rdr["response"]);
+                            lista.Add(result);
+                        }
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<ResponseTransaccion> getDeposito(ENTransaccion paramss)
+        {
+            try
+            {
+                string cs = ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString;
+                var lista = new List<ResponseTransaccion>();
+
+                using (SqlConnection conn = new SqlConnection(cs))
+                {
+                    conn.Open();
+                    //Se llama al store procedure
+                    SqlCommand cmd = new SqlCommand("usp_deposito", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@idusuario", paramss.idusuario));
+                    cmd.Parameters.Add(new SqlParameter("@dinero", paramss.dinero));
+
+                    //Ejecuta el SP
+                    using (SqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                        while (rdr.Read())
+                        {
+                            var result = new ResponseTransaccion();
+                            result.msg = Convert.ToString(rdr["response"]);
+                            lista.Add(result);
+                        }
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<ResponseTransaccion> getRetiro(ENTransaccion paramss)
+        {
+            try
+            {
+                string cs = ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString;
+                var lista = new List<ResponseTransaccion>();
+
+                using (SqlConnection conn = new SqlConnection(cs))
+                {
+                    conn.Open();
+                    //Se llama al store procedure
+                    SqlCommand cmd = new SqlCommand("usp_retiro", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@idusuario", paramss.idusuario));
+                    cmd.Parameters.Add(new SqlParameter("@dinero", paramss.dinero));
 
                     //Ejecuta el SP
                     using (SqlDataReader rdr = cmd.ExecuteReader())
@@ -86,3 +156,5 @@ namespace CajaAhorro.DATOS
         }
     }
 }
+
+//usp_deposito

@@ -47,5 +47,35 @@ namespace CajaAhorro.WEBSERVICE.Controllers
                 throw ex;
             }
         }
+
+        [HttpPost]
+        [Route("deposito")]
+        public IHttpActionResult deposito(ENTransaccion paramss)
+        {
+            try
+            {
+                var rpt = daUsuario.getDeposito(paramss);
+                return Ok(rpt);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [HttpPost]
+        [Route("retiro")]
+        public IHttpActionResult retiro(ENTransaccion paramss)
+        {
+            try
+            {
+                var rpt = daUsuario.getRetiro(paramss);
+                return Ok(rpt);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
