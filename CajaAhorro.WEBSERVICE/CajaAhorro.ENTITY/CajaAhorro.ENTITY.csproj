@@ -42,8 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Parametros\ENRegistroEmpresa.cs" />
+    <Compile Include="Parametros\ENTransaccion.cs" />
+    <Compile Include="Parametros\ENUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Response\ResponseEstadoCuenta.cs" />
     <Compile Include="Response\ResponsePais.cs" />
+    <Compile Include="Response\ResponseTransaccion.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
