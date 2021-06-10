@@ -124,6 +124,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PanelController.cs" />
     <Compile Include="Controllers\RegistroUsuarioController.cs" />
+    <Compile Include="Controllers\TransaccionesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -214,14 +215,22 @@
     <Content Include="Content\img\img_logo\LOGO CNTI 1.png" />
     <Content Include="Content\img\img_logo\logo.jpg" />
     <Content Include="Content\img\img_logo\TuLogo.png" />
+    <Content Include="Content\img\panel\aporte.png" />
+    <Content Include="Content\img\panel\aporten.png" />
     <Content Include="Content\img\panel\cashbook_80px.png" />
     <Content Include="Content\img\panel\cash_in_hand_80px.png" />
     <Content Include="Content\img\panel\close_window_80px.png" />
+    <Content Include="Content\img\panel\debtn.png" />
+    <Content Include="Content\img\panel\deposito.png" />
+    <Content Include="Content\img\panel\depositon.png" />
+    <Content Include="Content\img\panel\deudan.png" />
     <Content Include="Content\img\panel\duration_finance_80px.png" />
     <Content Include="Content\img\panel\help_80px.png" />
     <Content Include="Content\img\panel\ledger_80px.png" />
     <Content Include="Content\img\panel\male_female_user_group_80px.png" />
+    <Content Include="Content\img\panel\minus_20px.png" />
     <Content Include="Content\img\panel\receive_cash_80px.png" />
+    <Content Include="Content\img\panel\retiron.png" />
     <Content Include="Content\img\panel\tips_80px.png" />
     <Content Include="Content\img\panel\transaction_80px.png" />
     <Content Include="Content\img\panel\transaction_list_80px.png" />
@@ -349,6 +358,7 @@
     <Content Include="Scripts\app\login.js" />
     <Content Include="Scripts\app\panel.js" />
     <Content Include="Scripts\app\registrousuario.js" />
+    <Content Include="Scripts\app\transacciones.js" />
     <Content Include="Scripts\js\global.js" />
     <Content Include="Scripts\js\table.js" />
     <Content Include="Scripts\js\validaciones.js" />
@@ -380,6 +390,7 @@
     <None Include="packages.config" />
     <Content Include="Views\Panel\Panel.cshtml" />
     <Content Include="Views\RegistroUsuario\RegistroUsuario.cshtml" />
+    <Content Include="Views\Transacciones\Transacciones.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CajaAhorro.BUSINESS\CajaAhorro.BUSINESS.csproj">

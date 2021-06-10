@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewBag.Title = "Transacciones";
+}
+
+<br />
+<br />
+<br />
+<br />
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <b>Transacciones</b>
+        <button type="button" class="btn btn-danger btn-sm" style="float:right;" id="cerrarModulo"><i class="fa fa-window-close"></i></button>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <button class="btn btn-default" id="btnsecciondeposito" style="background-color:aliceblue"><img src="~/Content/img/panel/depositon.png" alt="Alternate Text" /> Depósito</button>
+            <button class="btn btn-default" id="btnseccionretiro" style="background-color:aliceblue"><img src="~/Content/img/panel/retiron.png" alt="Alternate Text" /> Retiro</button>
+            <button class="btn btn-default" id="btnseccionaporte" style="background-color: aliceblue"><img src="~/Content/img/panel/aporte.png" alt="Alternate Text" /> Aportación</button>
+            <button class="btn btn-default" id="btnsecciondepositodeuda" style="background-color: aliceblue"><img src="~/Content/img/panel/deudan.png" alt="Alternate Text" /> Depósito a deuda</button>
+        </div>
+
+        <div class="col-md-12">
+            <center><h4 style="color:cornflowerblue" id="lblprin"></h4></center>              
+        </div>
+
+    </div>
+
+    <div class="panel-body">
+
+        <div id="divdeposito">
+
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="txtdeposito" placeholder="Cantidad a depositar" />
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <br />
+                <div class="col-md-3">
+                    <button class="btn btn-default" id="btndeposito"><img src="~/Content/img/panel/deposito.png" alt="Alternate Text" /> Depositar</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="divretiro" style="display:none;">
+
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="txtretiro" placeholder="Cantidad a retirar" />
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <br />
+                <div class="col-md-3">
+                    <button class="btn btn-default" id="btnretiro"><img src="~/Content/img/panel/minus_20px.png" alt="Alternate Text" /> Retirar</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="divaporte" style="display:none;">
+
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="txtaporte" placeholder="Cantidad a retirar" />
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <br />
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">Fecha: </span>
+                        <input type="date" class="form-control" id="txtfechaaporte" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <br />
+                <div class="col-md-3">
+                    <button class="btn btn-default" id="btnaporte"><img src="~/Content/img/panel/aporten.png" alt="Alternate Text" /> Aportar</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="divdepositodeuda" style="display:none;">
+
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="txtdepositodeuda" placeholder="Cantidad a retirar" />
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <br />
+                <div class="col-md-3">
+                    <button class="btn btn-default" id="btndepositodeuda"><img src="~/Content/img/panel/debtn.png" alt="Alternate Text" /> Deposito a deuda</button>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+<script type="text/javascript" src="~/Scripts/app/transacciones.js"></script>
+<script type="text/javascript" src="~/Scripts/js/validaciones.js"></script>
