@@ -11,7 +11,7 @@ namespace CajaAhorro.WEB.Controllers
     {
         public ActionResult Panel()
         {
-            /*
+            
             var session = Session.GetCurrentUser();
             if (session != null)
             {
@@ -29,8 +29,8 @@ namespace CajaAhorro.WEB.Controllers
                 Response.Cache.SetNoStore();
                 return RedirectToAction("Index", "Home");
             }
-            */
-            return View();
+            
+            //return View();
 
         }
 

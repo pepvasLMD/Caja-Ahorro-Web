@@ -123,7 +123,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PanelController.cs" />
-    <Compile Include="Controllers\RegistroEmpresaController.cs" />
+    <Compile Include="Controllers\RegistroUsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -348,6 +348,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\app\login.js" />
     <Content Include="Scripts\app\panel.js" />
+    <Content Include="Scripts\app\registrousuario.js" />
     <Content Include="Scripts\js\global.js" />
     <Content Include="Scripts\js\table.js" />
     <Content Include="Scripts\js\validaciones.js" />
@@ -370,7 +371,6 @@
     <Folder Include="Content\img\img_empresas\" />
     <Folder Include="Content\plugins\Validarcontraseñas\js\" />
     <Folder Include="Views\Login\" />
-    <Folder Include="Views\RegistroEmpresas\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -378,8 +378,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
-    <Content Include="Views\RegistroEmpresa\RegistroEmpresa.cshtml" />
     <Content Include="Views\Panel\Panel.cshtml" />
+    <Content Include="Views\RegistroUsuario\RegistroUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CajaAhorro.BUSINESS\CajaAhorro.BUSINESS.csproj">
