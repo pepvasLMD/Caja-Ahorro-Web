@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewBag.Title = "RegistroUsuario";
+    Layout = null;
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset-utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width-device-width, initial-scale-1.0" />
+    <title>Registro de Empresa</title>
+
+    <!-- CSS -->
+    <link href="~/Content/plugins/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />"
+    <link href="~/Content/style/style.css" rel="stylesheet" />
+    <!-- JS -->
+    <script src="~/Content/plugins/js/jquery-3.1.1.min.js"></script>
+    <script src="~/Content/plugins/js/bootstrap.min.js"></script>
+    <script src="~/Content/plugins/sweetalert2/sweetalert2.all.js"></script>
+    <script>
+    var appURL = "@Url.Content("~/")";
+    </script>
+
+</head>
+<body>
+    <br />
+    <div class="container">
+
+        <div class="row">
+
+            <form action="/" method="post">
+
+                <div class="col-md-12" style="height:50px">
+                    <div class="col-md-4">
+                    <h3><b>REGISTRARSE</b></h3>
+                    </div>
+                </div>
+
+                <div class="divregistrousuario" style="display:block;">                    
+                    
+                    <div class="col-md-12">
+                        <br />
+                        <div class="col-md-4">
+                            <span><label>Nombre de usuario: </label></span>
+                            <input type="text" class="form-control" id="txtusername" name="txtusername" placeholder="Nombre completo" required />
+                            <span id="msjusername"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <span><label>Correo Electrónico: </label></span>
+                            <input type="text" class="form-control" id="txtemail" name="txtemail" placeholder="Correo electrónico" required />
+                            <span id="msjemail"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <br />
+                        <div class="col-md-4">
+                            <span><label>Contraseña: </label></span>
+                            <input type="password" class="form-control" id="txtcontraseña" name="txtcontraseña" placeholder="Contraseña" required />
+                            <div class="show-eye"><i class="fa fa-eye" id="faeye"></i></div>
+                            <div class="show-eye-slash"><i class="fa fa-eye-slash" id="faeyeslash"></i></div>
+                            <span id="msjpassword"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <span><label>Confirmar contraseña: </label></span>
+                            <input type="password" class="form-control" id="txtconfirmarcontraseña" name="txtconfirmarcontraseña" placeholder="Confirmar contraseña" required />
+                            <div class="show-eye-confir"><i class="fa fa-eye" id="faeye2"></i></div>
+                            <div class="show-eye-confir"><i class="fa fa-eye-slash" id="faeyeslash2"></i></div>
+                            <span id="msjpassword2"></span>
+                        </div>
+                    </div>
+                    
+
+                        <div class="col-md-12">
+                            <br />
+                            <div class="col-md-3">
+                            </div>
+
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-danger " id="btnatras">
+                                    <img src="~/Content/img/imagenes/flecha-izquierda.png" />
+                                    Atrás
+                                </button>
+                            </div>
+
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-default " id="btnregistrar">
+                                    <img src="~/Content/img/imagenes/salvar.png" />Registrar
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <br />
+                            <div class="col-md-3">
+                            </div>
+                            <div class="col-md-3">
+                                <label><b>Requisitos de la contraseña: </b></label><br />
+                                &nbsp;&nbsp;<span>- Debe tener una mayúscula</span><br />
+                                &nbsp;&nbsp;<span>- Debe tener una minúscula</span><br />
+                                &nbsp;&nbsp;<span>- Debe tener un caracter especial</span><br />
+                                &nbsp;&nbsp;<span>- Debe tener como mínimo 8 caracteres</span><br />
+                            </div>
+                        </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+<!-- ENLAZAR ARCHIVOS JS-->
+<script type="text/javascript" src="~/Scripts/app/registrousuario.js"></script>
+<script type="text/javascript" src="~/Scripts/js/validaciones.js"></script>
+<script type="text/javascript" src="~/Scripts/js/global.js"></script>
+<script type="text/javascript" src="~/Scripts/js/validacionPassword.js"></script>
+
