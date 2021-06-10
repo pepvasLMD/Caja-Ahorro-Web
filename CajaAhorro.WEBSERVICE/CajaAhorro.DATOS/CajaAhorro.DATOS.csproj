@@ -57,6 +57,7 @@
     <Compile Include="DALogin.cs" />
     <Compile Include="DAPaises.cs" />
     <Compile Include="DARegistroEmpresas.cs" />
+    <Compile Include="DAUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
