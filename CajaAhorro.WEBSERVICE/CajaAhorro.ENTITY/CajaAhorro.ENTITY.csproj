@@ -61,7 +61,7 @@
     <Compile Include="Response\ResponseEstadoCuenta.cs" />
     <Compile Include="Response\ResponseLogin.cs" />
     <Compile Include="Response\ResponsePais.cs" />
-    <Compile Include="Response\ResponseTransaccion.cs" />
+    <Compile Include="Response\ResponseUsuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

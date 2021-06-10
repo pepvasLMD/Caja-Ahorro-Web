@@ -77,5 +77,21 @@ namespace CajaAhorro.WEBSERVICE.Controllers
                 throw ex;
             }
         }
+
+        [HttpPost]
+        [Route("registrarUsuario")]
+        public IHttpActionResult registrarUsuario(ENUsuario paramss)
+        {
+            try
+            {
+                var rpt = daUsuario.registrarUsuario(paramss);
+                return Ok(rpt);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

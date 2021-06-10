@@ -50,12 +50,12 @@ namespace CajaAhorro.DATOS
             }
         }
 
-        public List<ResponseTransaccion> getDarAportacion(ENTransaccion paramss)
+        public List<ResponseUsuario> getDarAportacion(ENTransaccion paramss)
         {
             try
             {
                 string cs = ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString;
-                var lista = new List<ResponseTransaccion>();
+                var lista = new List<ResponseUsuario>();
 
                 using (SqlConnection conn = new SqlConnection(cs))
                 {
@@ -71,8 +71,8 @@ namespace CajaAhorro.DATOS
                     {
                         while (rdr.Read())
                         {
-                            var result = new ResponseTransaccion();
-                            result.msg = Convert.ToString(rdr["response"]);
+                            var result = new ResponseUsuario();
+                            result.response = Convert.ToString(rdr["response"]);
                             lista.Add(result);
                         }
                     }
@@ -85,12 +85,12 @@ namespace CajaAhorro.DATOS
             }
         }
 
-        public List<ResponseTransaccion> getDeposito(ENTransaccion paramss)
+        public List<ResponseUsuario> getDeposito(ENTransaccion paramss)
         {
             try
             {
                 string cs = ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString;
-                var lista = new List<ResponseTransaccion>();
+                var lista = new List<ResponseUsuario>();
 
                 using (SqlConnection conn = new SqlConnection(cs))
                 {
@@ -106,8 +106,8 @@ namespace CajaAhorro.DATOS
                     {
                         while (rdr.Read())
                         {
-                            var result = new ResponseTransaccion();
-                            result.msg = Convert.ToString(rdr["response"]);
+                            var result = new ResponseUsuario();
+                            result.response = Convert.ToString(rdr["response"]);
                             lista.Add(result);
                         }
                     }
@@ -120,12 +120,12 @@ namespace CajaAhorro.DATOS
             }
         }
 
-        public List<ResponseTransaccion> getRetiro(ENTransaccion paramss)
+        public List<ResponseUsuario> getRetiro(ENTransaccion paramss)
         {
             try
             {
                 string cs = ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString;
-                var lista = new List<ResponseTransaccion>();
+                var lista = new List<ResponseUsuario>();
 
                 using (SqlConnection conn = new SqlConnection(cs))
                 {
@@ -141,8 +141,44 @@ namespace CajaAhorro.DATOS
                     {
                         while (rdr.Read())
                         {
-                            var result = new ResponseTransaccion();
-                            result.msg = Convert.ToString(rdr["response"]);
+                            var result = new ResponseUsuario();
+                            result.response = Convert.ToString(rdr["response"]);
+                            lista.Add(result);
+                        }
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<ResponseUsuario> registrarUsuario(ENUsuario paramss)
+        {
+            try
+            {
+                string cs = ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString;
+                var lista = new List<ResponseUsuario>();
+
+                using (SqlConnection conn = new SqlConnection(cs))
+                {
+                    conn.Open();
+                    //Se llama al store procedure
+                    SqlCommand cmd = new SqlCommand("usp_altaUsuario", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@nombre", paramss.nombre));
+                    cmd.Parameters.Add(new SqlParameter("@email", paramss.email));
+                    cmd.Parameters.Add(new SqlParameter("@password", paramss.password));
+
+                    //Ejecuta el SP
+                    using (SqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                        while (rdr.Read())
+                        {
+                            var result = new ResponseUsuario();
+                            result.response = Convert.ToString(rdr["response"]);
                             lista.Add(result);
                         }
                     }
