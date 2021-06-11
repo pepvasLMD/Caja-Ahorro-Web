@@ -7,10 +7,10 @@ using System.Web.Mvc;
 
 namespace CajaAhorro.WEB.Controllers
 {
-    public class TransaccionesController : Controller
+    public class PrestamoController : Controller
     {
-        // GET: Transacciones
-        public ActionResult Transacciones()
+        // GET: Prestamo
+        public ActionResult Prestamo()
         {
             return View();
         }
@@ -28,7 +28,7 @@ namespace CajaAhorro.WEB.Controllers
             else
             {
                 var respuesta = "error";
-                return Json(new { dt = respuesta });                
+                return Json(new { dt = respuesta });
             }
         }
     }

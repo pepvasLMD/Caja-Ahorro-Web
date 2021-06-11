@@ -1,39 +1,17 @@
 ﻿
-/*
-function empleados() {
-    Post("Empleados/validarAccesoModulo").done(function (datos) {
-
-        if (datos.dt == "ok") {
-
-            window.location = fnBaseURLWeb("Empleados/Empleados");
-
-        } else {
-            swal({
-                position: 'top-end',
-                type: 'error',
-                title: 'No tiene acceso a este módulo',
-                text: 'Contacte con el administrador del sistema',
-                showConfirmButton: true,
-                timer: 60000,
-                confirmButtonText: 'Cerrar'
-            })
-        }
-    })
-}
-
-function proveedores() {
-    Post("Proveedores/validarAccesoModulo").done(function (datos) {
+function transacciones() {
+    Post("Transacciones/validarAccesoModulo").done(function (datos) {
 
         if (datos.dt == "ok") {
             //LA URL A LA QUE LLEVA
-            window.location = fnBaseURLWeb("Proveedores/Proveedores");
+            window.location = fnBaseURLWeb("Transacciones/Transacciones");
 
         } else {
             swal({
                 position: 'top-end',
                 type: 'error',
                 title: 'No tiene acceso a este módulo',
-                text: 'Contacte con el administrador del sistema',
+                text: 'Sólo para clientes',
                 showConfirmButton: true,
                 timer: 60000,
                 confirmButtonText: 'Cerrar'
@@ -42,18 +20,19 @@ function proveedores() {
     })
 }
 
-function productos() {
-
-    Post("Productos/validarAccesoModulo").done(function (datos) {
+function prestamos() {
+    Post("Prestamo/validarAccesoModulo").done(function (datos) {
 
         if (datos.dt == "ok") {
-            window.location = fnBaseURLWeb("Productos/Productos");
+            //LA URL A LA QUE LLEVA
+            window.location = fnBaseURLWeb("Prestamo/Prestamo");
+
         } else {
             swal({
                 position: 'top-end',
                 type: 'error',
-                title: "No tiene acceso a este módulo",
-                text: 'Contacte con el administrador del sistema',
+                title: 'No tiene acceso a este módulo',
+                text: 'Sólo para clientes',
                 showConfirmButton: true,
                 timer: 60000,
                 confirmButtonText: 'Cerrar'
@@ -62,25 +41,7 @@ function productos() {
     })
 }
 
-//Lo que hace referencia en el panel
-function inventario() {
 
-    Post("Productos/validarAccesoModulo").done(function (datos) {
 
-        if (datos.dt == "ok") {
-            window.location = fnBaseURLWeb("Inventarios/Inventarios");
-        } else {
-            swal({
-                position: 'top-end',
-                type: 'error',
-                title: "No tiene acceso a este módulo",
-                text: 'Contacte con el administrador del sistema',
-                showConfirmButton: true,
-                timer: 60000,
-                confirmButtonText: 'Cerrar'
-            })
-        }
-    })
-}
-*/
+
 

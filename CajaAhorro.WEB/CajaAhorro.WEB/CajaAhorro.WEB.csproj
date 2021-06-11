@@ -123,6 +123,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PanelController.cs" />
+    <Compile Include="Controllers\PrestamoController.cs" />
     <Compile Include="Controllers\RegistroUsuarioController.cs" />
     <Compile Include="Controllers\TransaccionesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -229,6 +230,7 @@
     <Content Include="Content\img\panel\ledger_80px.png" />
     <Content Include="Content\img\panel\male_female_user_group_80px.png" />
     <Content Include="Content\img\panel\minus_20px.png" />
+    <Content Include="Content\img\panel\prestamo.png" />
     <Content Include="Content\img\panel\receive_cash_80px.png" />
     <Content Include="Content\img\panel\retiron.png" />
     <Content Include="Content\img\panel\tips_80px.png" />
@@ -357,6 +359,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\app\login.js" />
     <Content Include="Scripts\app\panel.js" />
+    <Content Include="Scripts\app\prestamo.js" />
     <Content Include="Scripts\app\registrousuario.js" />
     <Content Include="Scripts\app\transacciones.js" />
     <Content Include="Scripts\js\global.js" />
@@ -391,6 +394,7 @@
     <Content Include="Views\Panel\Panel.cshtml" />
     <Content Include="Views\RegistroUsuario\RegistroUsuario.cshtml" />
     <Content Include="Views\Transacciones\Transacciones.cshtml" />
+    <Content Include="Views\Prestamo\Prestamo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CajaAhorro.BUSINESS\CajaAhorro.BUSINESS.csproj">

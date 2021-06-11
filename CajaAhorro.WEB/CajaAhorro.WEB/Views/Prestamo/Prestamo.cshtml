@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Prestamo";
+}
+
+<br />
+<br />
+<br />
+<br />
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <b>Transacciones</b>
+        <button type="button" class="btn btn-danger btn-sm" style="float:right;" id="cerrarModulo"><i class="fa fa-window-close"></i></button>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+        </div>
+
+        <div class="col-md-12">
+            <center><h3 style="color:cornflowerblue" id="lblprin">PRÉSTAMOS</h3></center>
+        </div>
+
+    </div>
+
+    <div class="panel-body">
+
+        <div id="divdeposito">            
+
+            <div class="col-md-12">
+                <br />
+                <div class="col-md-2">
+                    <label><b>Cantidad a solicitar: $</b></label>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" id="txtcantidad" placeholder="Cantidad solicitada" onkeypress="return solonumeros(event)" maxlength="7" />
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <br/>
+                <div class="col-md-2">
+                    <span><label><b>Plazo: </b></label></span>                    
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control" id="slplazo" name="slplazo">
+                        <option value="8">3 Meses (8% interés)</option>
+                        <option value="4">6 Meses (4% interés)</option>
+                        <option value="2">9 Meses (2% interés)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <br />
+                <div class="col-md-3">
+                    <button class="btn btn-default" id="btnprestamo"><img src="~/Content/img/panel/prestamo.png" alt="Alternate Text" /> Solicitar préstamo</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript" src="~/Scripts/app/prestamo.js"></script>
+<script type="text/javascript" src="~/Scripts/js/validaciones.js"></script>
