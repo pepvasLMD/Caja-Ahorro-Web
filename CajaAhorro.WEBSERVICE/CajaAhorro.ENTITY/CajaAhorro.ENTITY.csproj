@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Parametros\ENLogin.cs" />
+    <Compile Include="Parametros\ENPrestamo.cs" />
     <Compile Include="Parametros\ENRegistroEmpresa.cs" />
     <Compile Include="Parametros\ENTransaccion.cs" />
     <Compile Include="Parametros\ENUsuario.cs" />

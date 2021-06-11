@@ -129,6 +129,7 @@
     <Compile Include="Clases\TokenGenerator.cs" />
     <Compile Include="Clases\TokenValidation.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PrestamoController.cs" />
     <Compile Include="Controllers\RegistroEmpresaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -149,6 +150,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Prestamo\" />
     <Folder Include="Views\RegistroEmpresa\" />
     <Folder Include="Views\Usuario\" />
   </ItemGroup>
