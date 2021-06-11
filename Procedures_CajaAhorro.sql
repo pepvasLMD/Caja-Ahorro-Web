@@ -180,3 +180,74 @@
 --	INNER JOIN dtusuarios u on u.idusuario = c.idusuario
 --	WHERE DATEDIFF(yy, pr.fecha, @fecha) = 0 and DATEDIFF(mm, pr.fecha, @fecha) = 0 and DATEDIFF(dd, pr.fecha, @fecha) = 0
 --END
+
+--create procedure usp_darPrestamo
+--(
+--@idusuario int,
+--@dinero decimal(18,2),
+--@opcion int
+--)
+--AS
+--BEGIN
+--	IF EXISTS(SELECT * FROM dtusuarios WHERE idusuario = @idusuario)
+--	BEGIN
+
+--		IF @dinero > 0
+--		BEGIN
+--			DECLARE @dinero_disponible decimal(18,2)
+--			SET @dinero_disponible = (select (select sum(monto) as retiro from dtproceso where mensaje = 'SUCCESS' and tipo <> 'Retiro' ) - (select sum(monto) as retiro from dtproceso where mensaje = 'SUCCESS' and tipo = 'Retiro'))
+
+--			DECLARE @idcuenta int
+--			DECLARE @dinero_retenido decimal(18,2)
+--			SET @idcuenta = (SELECT idcuenta from dtcuenta where idusuario = @idusuario)
+
+--			SET @dinero_retenido = @dinero * .20
+
+--			IF EXISTS (SELECT * FROM dtcuenta where idcuenta = @idcuenta and disponible >= @dinero_retenido)
+--			BEGIN
+--				IF @dinero_disponible >= @dinero
+--				BEGIN
+--					IF @opcion = 8
+--					BEGIN
+--						INSERT INTO dtprestamo values(@idcuenta, @opcion, @dinero, 0, GETDATE(), DATEADD(MONTH, 3, GETDATE()))
+--						UPDATE dtcuenta set disponible = disponible - @dinero_retenido where idcuenta = @idcuenta
+--					END
+
+--					IF @opcion = 4
+--					BEGIN
+--						INSERT INTO dtprestamo values(@idcuenta, @opcion, @dinero, 0, GETDATE(), DATEADD(MONTH, 6, GETDATE()))
+--						UPDATE dtcuenta set disponible = disponible - @dinero_retenido where idcuenta = @idcuenta
+--					END
+
+--					IF @opcion = 2
+--					BEGIN
+--						INSERT INTO dtprestamo values(@idcuenta, @opcion, @dinero, 0, GETDATE(), DATEADD(MONTH, 9, GETDATE()))
+--						UPDATE dtcuenta set disponible = disponible - @dinero_retenido where idcuenta = @idcuenta
+--					END
+
+--					INSERT INTO dtproceso values(@idcuenta, GETDATE(), @dinero, 'Prestamo', 'SUCCESS', 'Prestamo realizado')
+--				END
+--				ELSE
+--				BEGIN
+--					INSERT INTO dtproceso values(@idcuenta, GETDATE(), @dinero, 'Prestamo', 'ERROR', 'No hay dinero suficiente en la caja')
+--					SELECT 'No hay dinero disponible en la caja' response
+--				END
+
+--			END
+--			ELSE
+--			BEGIN
+--				INSERT INTO dtproceso values(@idcuenta, GETDATE(), @dinero, 'Prestamo', 'ERROR', 'No cuenta con el recurso suficiente para efectuar un prestamo')
+--				SELECT 'No cuenta con el recurso suficiente para efectuar un prestamo' response
+--			END
+--		END
+--		ELSE
+--		BEGIN
+--			SELECT 'El prestamo debe ser mayor a 0' response
+--		END
+--	END
+--	ELSE
+--	BEGIN
+--		SELECT 'No se puede realizar el prestamo' response
+--	END
+
+--END
