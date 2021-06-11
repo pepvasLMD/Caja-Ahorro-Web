@@ -41,6 +41,27 @@ function prestamos() {
     })
 }
 
+function procesos() {
+    Post("Procesos/validarAccesoModulo").done(function (datos) {
+
+        if (datos.dt == "ok") {
+            //LA URL A LA QUE LLEVA
+            window.location = fnBaseURLWeb("Procesos/Procesos");
+
+        } else {
+            swal({
+                position: 'top-end',
+                type: 'error',
+                title: 'No tiene acceso a este módulo',
+                text: 'Sólo para el administrador',
+                showConfirmButton: true,
+                timer: 60000,
+                confirmButtonText: 'Cerrar'
+            })
+        }
+    })
+}
+
 
 
 

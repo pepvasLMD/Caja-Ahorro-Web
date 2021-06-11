@@ -124,6 +124,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PanelController.cs" />
     <Compile Include="Controllers\PrestamoController.cs" />
+    <Compile Include="Controllers\ProcesosController.cs" />
     <Compile Include="Controllers\RegistroUsuarioController.cs" />
     <Compile Include="Controllers\TransaccionesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -360,6 +361,7 @@
     <Content Include="Scripts\app\login.js" />
     <Content Include="Scripts\app\panel.js" />
     <Content Include="Scripts\app\prestamo.js" />
+    <Content Include="Scripts\app\procesos.js" />
     <Content Include="Scripts\app\registrousuario.js" />
     <Content Include="Scripts\app\transacciones.js" />
     <Content Include="Scripts\js\global.js" />
@@ -395,6 +397,7 @@
     <Content Include="Views\RegistroUsuario\RegistroUsuario.cshtml" />
     <Content Include="Views\Transacciones\Transacciones.cshtml" />
     <Content Include="Views\Prestamo\Prestamo.cshtml" />
+    <Content Include="Views\Procesos\Procesos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CajaAhorro.BUSINESS\CajaAhorro.BUSINESS.csproj">
