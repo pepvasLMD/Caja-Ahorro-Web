@@ -1,4 +1,5 @@
-﻿using CajaAhorro.DATOS;
+﻿using BAZ.GEN.Log4Dan;
+using CajaAhorro.DATOS;
 using CajaAhorro.ENTITY.Parametros;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace CajaAhorro.WEBSERVICE.Controllers
     public class UsuarioController : ApiController
     {
         private DAUsuario daUsuario;
+        private Log Log = new Log(typeof(LoginController));
 
         public UsuarioController()
         {
@@ -84,6 +86,15 @@ namespace CajaAhorro.WEBSERVICE.Controllers
         {
             try
             {
+                var ex = "";
+
+                if (paramss == null)
+                {
+                    ex = "No se enviaron datos desde la web";
+                    Log.WriteLogError(ex);
+                }
+
+            
                 var rpt = daUsuario.registrarUsuario(paramss);
                 return Ok(rpt);
             }

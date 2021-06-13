@@ -46,9 +46,11 @@
   <ItemGroup>
     <Compile Include="Parametros\ENLogin.cs" />
     <Compile Include="Parametros\ENRegistroEmpresa.cs" />
+    <Compile Include="Parametros\ENUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Response\ResponseLogin.cs" />
     <Compile Include="Response\ResponsePais.cs" />
+    <Compile Include="Response\ResponseUsuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

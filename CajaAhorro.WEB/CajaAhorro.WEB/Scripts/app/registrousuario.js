@@ -55,6 +55,10 @@ $("#btnregistrar").on("click", function () {
         $("#txtconfirmarcontraseña").focus();
     } else {
 
+        /***********
+         * INICIA ENVÍO DE DATOS
+         ***********/
+
         let params = new Object();
         params.nombre = username;
         params.email = email;
@@ -90,6 +94,7 @@ $("#btnregistrar").on("click", function () {
                 })
             }
         })
+
     }
 })
 

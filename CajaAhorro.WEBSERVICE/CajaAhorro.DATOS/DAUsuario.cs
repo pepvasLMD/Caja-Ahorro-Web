@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-
+using System.Linq;
 
 namespace CajaAhorro.DATOS
 {
@@ -155,7 +155,8 @@ namespace CajaAhorro.DATOS
             }
         }
 
-        public List<ResponseUsuario> registrarUsuario(ENUsuario paramss)
+
+        public ResponseUsuario registrarUsuario(ENUsuario paramss)
         {
             try
             {
@@ -183,14 +184,14 @@ namespace CajaAhorro.DATOS
                         }
                     }
                 }
-                return lista;
+                return lista.FirstOrDefault();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+
     }
 }
 
-//usp_deposito
