@@ -120,8 +120,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\EstadoCajaController.cs" />
+    <Compile Include="Controllers\HistorialUController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MiCuentaController.cs" />
     <Compile Include="Controllers\PanelController.cs" />
     <Compile Include="Controllers\PrestamoController.cs" />
     <Compile Include="Controllers\ProcesosController.cs" />
@@ -358,7 +361,10 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\app\estadocaja.js" />
+    <Content Include="Scripts\app\historialu.js" />
     <Content Include="Scripts\app\login.js" />
+    <Content Include="Scripts\app\micuenta.js" />
     <Content Include="Scripts\app\panel.js" />
     <Content Include="Scripts\app\prestamo.js" />
     <Content Include="Scripts\app\procesos.js" />
@@ -385,7 +391,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\img\img_empresas\" />
     <Folder Include="Content\plugins\Validarcontraseñas\js\" />
-    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -398,6 +403,9 @@
     <Content Include="Views\Transacciones\Transacciones.cshtml" />
     <Content Include="Views\Prestamo\Prestamo.cshtml" />
     <Content Include="Views\Procesos\Procesos.cshtml" />
+    <Content Include="Views\HistorialU\HistorialU.cshtml" />
+    <Content Include="Views\MiCuenta\MiCuenta.cshtml" />
+    <Content Include="Views\EstadoCaja\EstadoCaja.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CajaAhorro.BUSINESS\CajaAhorro.BUSINESS.csproj">

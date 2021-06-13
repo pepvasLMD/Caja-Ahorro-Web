@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "MiCuenta";
+}
+
+<br />
+<br />
+<br />
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <b>Estado de cuenta</b>
+        <button type="button" class="btn btn-danger btn-sm" style="float:right;" id="cerrarModulo"><i class="fa fa-window-close"></i></button>
+    </div>
+
+    <div class="panel panel-default">        
+
+        <div class="col-ms-12">
+            <center>
+                <h4 style="color:dodgerblue;" id="lblprin"> ESTADO DE CUENTA </h4>
+            </center>
+        </div>
+
+    </div>
+
+    <div class="panel-body">        
+
+        <div class="divEstadoCaja">
+
+            <div class="oculto">
+
+                <!--Se obtiene, pero no se muestra el idProducto
+    <input type="hidden" class="form-control" id="txtidproducto" />
+    -->
+                <div class="col-md-12">
+                    <br />
+                    <div class="col-md-2">
+                        <span><b>Dinero: </b></span>
+                    </div>
+                    <div class="col-md-4">
+                        <span id="lbldinero">  </span>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <br />
+                    <div class="col-md-2">
+                        <span><b>Dinero disponible: </b></span>
+                    </div>
+                    <div class="col-md-4">
+                        <span id="lbldineroretenido">  </span>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <br />
+                    <div class="col-md-2">
+                        <span><b>Deuda: </b></span>
+                    </div>
+                    <div class="col-md-4">
+                        <span id="lbldeuda">  </span>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <br />
+                    <div class="col-md-2">
+                        <button class="btn btn-danger" id="btnbaja"><img src="~/Content/img/panel/minus_20px.png" alt="Alternate Text" /> DARSE DE BAJA</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="~/Scripts/app/micuenta.js"></script>
+<script type="text/javascript" src="~/Scripts/js/validaciones.js"></script>
+

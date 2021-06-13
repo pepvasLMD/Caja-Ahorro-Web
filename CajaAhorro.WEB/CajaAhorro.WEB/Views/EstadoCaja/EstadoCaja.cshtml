@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "EstadoCaja";
+}
+
+<br />
+<br />
+<br />
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <b>Estado de la caja</b>
+        <button type="button" class="btn btn-danger btn-sm" style="float:right;" id="cerrarModulo"><i class="fa fa-window-close"></i></button>
+    </div>
+
+    <div class="panel panel-default">
+
+        <div class="col-ms-12">
+            <center>
+                <h4 style="color:dodgerblue;" id="lblprin"> ESTADO DE LA CAJA </h4>
+            </center>
+
+        </div>
+
+    </div>
+
+    <div class="panel-body">
+
+
+        <div class="divEstadoCaja">
+
+            <div class="oculto">
+
+                <!--Se obtiene, pero no se muestra el idProducto
+                    <input type="hidden" class="form-control" id="txtidproducto" />
+                -->
+                <div class="col-md-12">
+                    <br />
+                    <div class="col-md-2">
+                        <span><b>Dinero en caja: </b></span>
+                    </div>
+                    <div class="col-md-4">
+                        <span id="lbldinerocaja">  </span>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <br />
+                    <div class="col-md-2">
+                        <span><b>Dinero retenido: </b></span>
+                    </div>
+                    <div class="col-md-4">
+                        <span id="lbldineroretenido">  </span>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <br />
+                    <div class="col-md-2">
+                        <span><b>Dinero en préstamos: </b></span>
+                    </div>
+                    <div class="col-md-4">
+                        <span id="lbldineroprestado">  </span>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="~/Scripts/app/estadocaja.js"></script>
+<script type="text/javascript" src="~/Scripts/js/validaciones.js"></script>
+
+

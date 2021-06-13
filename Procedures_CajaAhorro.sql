@@ -1,3 +1,5 @@
+/****************************** DAR APORTACIÓN *********************************************/
+
 --CREATE PROCEDURE usp_darAportacion ( @idusuario int, @dinero decimal(18,2))
 --AS
 --BEGIN
@@ -24,7 +26,7 @@
 --	END
 --END
 
-
+/****************************** DEPOSITAR *********************************************/
 
 --CREATE PROCEDURE usp_deposito(@idusuario int, @dinero decimal(18,2))
 --AS
@@ -53,6 +55,7 @@
 --	END
 --END
 
+/****************************** RETIRAR *********************************************/
 
 --CREATE PROCEDURE usp_retiro(@idusuario int, @dinero decimal(18,2))
 --AS
@@ -103,36 +106,39 @@
 --	END
 --END
 
+/****************************** ALTA USUARIO *********************************************/
 
---CREATE PROCEDURE usp_altaUsuario(
---@nombre nchar(200),
---@email varchar(max),
---@password varchar(max)
---)
---AS
---BEGIN
---	IF NOT EXISTS(SELECT * FROM dtusuarios WHERE nombre = @nombre)
---	BEGIN
---		IF NOT EXISTS(SELECT * FROM dtusuarios WHERE email = @email)
---		BEGIN
---			declare @lastid int
---			INSERT INTO dtusuarios VALUES(@nombre,@email,@password,'cliente')
+ALTER PROCEDURE usp_altaUsuario(
+@nombre nchar(200),
+@email varchar(max),
+@password varchar(max)
+)
+AS
+BEGIN
+	IF NOT EXISTS(SELECT * FROM dtusuarios WHERE nombre = @nombre)
+	BEGIN
+		IF NOT EXISTS(SELECT * FROM dtusuarios WHERE email = @email)
+		BEGIN
+			declare @lastid int
+			INSERT INTO dtusuarios VALUES(@nombre,@email,@password,'cliente')
 
---			SET @lastid = @@IDENTITY
+			SET @lastid = @@IDENTITY
 
---			INSERT INTO dtcuenta values(@lastid, 0, 0)
---			SELECT 'ok' response
---		END
---		ELSE
---		BEGIN
---			SELECT 'El email del usuario ya existe' response
---		END
---	END
---	ELSE
---	BEGIN
---		SELECT 'El nombre de usuario ya existe' response
---	END
---END
+			INSERT INTO dtcuenta values(@lastid, 0, 0)
+			SELECT 'ok' response
+		END
+		ELSE
+		BEGIN
+			SELECT 'El email del usuario ya existe' response
+		END
+	END
+	ELSE
+	BEGIN
+		SELECT 'El nombre de usuario ya existe' response
+	END
+END
+
+/****************************** VALIDAR TOKEN *********************************************/
 
 --CREATE PROCEDURE usp_ValidarUserToken
 --(
@@ -156,45 +162,49 @@
 --	END
 --END
 
+/****************************** ESTADO DE CUENTA *********************************************/
 
---CREATE PROCEDURE usp_obtenerEstadoCuentaUsuario
---(
---@idusuario int
---)
---AS
---BEGIN
+CREATE PROCEDURE usp_obtenerEstadoCuentaUsuario
+(
+@idusuario int
+)
+AS
+BEGIN
 
 	
---	DECLARE @idcuenta int
---	SET @idcuenta = (SELECT idcuenta from dtcuenta where idusuario = @idusuario)
+	DECLARE @idcuenta int
+	SET @idcuenta = (SELECT idcuenta from dtcuenta where idusuario = @idusuario)
 
---	IF EXISTS (SELECT * from dtprestamo where idcuenta = @idcuenta)
---	BEGIN
+	IF EXISTS (SELECT * from dtprestamo where idcuenta = @idcuenta)
+	BEGIN
 
---		SELECT c.idcuenta, c.idusuario, c.dinero, c.disponible, sum(p.deuda) as deuda_total, 'ok' response FROM dtcuenta c
---		INNER JOIN dtprestamo p on p.idcuenta = c.idcuenta
---		WHERE c.idusuario = @idusuario GROUP BY c.idcuenta, c.idusuario, c.dinero, c.disponible
---	END
---	ELSE
---	BEGIN
---		SELECT c.idcuenta, c.idusuario, c.dinero, c.disponible, 0 deuda_total, 'ok' response FROM dtcuenta c
---		WHERE c.idcuenta = @idcuenta
---	END
---END
+		SELECT c.idcuenta, c.idusuario, c.dinero, c.disponible, sum(p.deuda) as deuda_total, 'ok' response FROM dtcuenta c
+		INNER JOIN dtprestamo p on p.idcuenta = c.idcuenta
+		WHERE c.idusuario = @idusuario GROUP BY c.idcuenta, c.idusuario, c.dinero, c.disponible
+	END
+	ELSE
+	BEGIN
+		SELECT c.idcuenta, c.idusuario, c.dinero, c.disponible, 0 deuda_total, 'ok' response FROM dtcuenta c
+		WHERE c.idcuenta = @idcuenta
+	END
+END
 
+/****************************** PROCESOS DEL DIA *********************************************/
 
---CREATE PROCEDURE usp_listarProcesosDia
---AS
---BEGIN
+ALTER PROCEDURE usp_listarProcesosDia
+AS
+BEGIN
 
---	DECLARE @fecha datetime
---	SELECT @fecha = GETDATE()
+	DECLARE @fecha datetime
+	SELECT @fecha = GETDATE()
 
---	SELECT pr.*, u.nombre, u.email, u.password, u.tipo FROM dtproceso pr
---	INNER JOIN dtcuenta c on c.idcuenta = pr.idcuenta
---	INNER JOIN dtusuarios u on u.idusuario = c.idusuario
---	WHERE DATEDIFF(yy, pr.fecha, @fecha) = 0 and DATEDIFF(mm, pr.fecha, @fecha) = 0 and DATEDIFF(dd, pr.fecha, @fecha) = 0
---END
+	SELECT pr.*, u.nombre, u.email FROM dtproceso pr
+	INNER JOIN dtcuenta c on c.idcuenta = pr.idcuenta
+	INNER JOIN dtusuarios u on u.idusuario = c.idusuario
+	WHERE DATEDIFF(yy, pr.fecha, @fecha) = 0 and DATEDIFF(mm, pr.fecha, @fecha) = 0 and DATEDIFF(dd, pr.fecha, @fecha) = 0
+END
+
+/****************************** DAR PRÉSTAMO *********************************************/
 
 ALTER PROCEDURE usp_darPrestamo
 (
@@ -272,5 +282,23 @@ BEGIN
 
 END
 
+/********************************** LISTAR PROCESOS USUARIO ******************************/
 
-select * from dtprestamo
+ALTER PROCEDURE usp_listarProcesosUsuario(@idusuario int)
+AS
+BEGIN
+	IF EXISTS(SELECT * FROM dtusuarios WHERE @idusuario = idusuario AND tipo != 'admin')
+	BEGIN
+		SELECT a.idusuario,a .nombre, c.fecha, c.tipo, c.monto FROM dtusuarios a
+		INNER JOIN dtcuenta b ON a.idusuario = b.idusuario
+		INNER JOIN dtproceso c ON c.idcuenta = b.idcuenta
+		WHERE b.idusuario = @idusuario
+		SELECT 'ok' response
+	END
+	ELSE
+	BEGIN
+		SELECT 'No se encontró al usuario' response
+	END
+END
+
+usp_listarProcesosUsuario 1
