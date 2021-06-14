@@ -51,5 +51,16 @@ namespace CajaAhorro.WEB.Controllers
             var respuesta = buUsuario.deposito(paramss, token);
             return Json(new { dt = respuesta });
         }
+
+        [HttpPost]
+        public ActionResult retiro(ENUsuario paramss)
+        {
+            var session = Session.GetCurrentUser();
+            var token = session.responsetoken;
+            paramss.idusuario = session.iduser;
+
+            var respuesta = buUsuario.retiro(paramss, token);
+            return Json(new { dt = respuesta });
+        }
     }
 }

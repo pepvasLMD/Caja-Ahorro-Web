@@ -120,42 +120,7 @@ namespace CajaAhorro.DATOS
             }
         }
 
-        //public List<ResponseUsuario> getDeposito(ENTransaccion paramss)
-        //{
-        //    try
-        //    {
-        //        string cs = ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString;
-        //        var lista = new List<ResponseUsuario>();
-
-        //        using (SqlConnection conn = new SqlConnection(cs))
-        //        {
-        //            conn.Open();
-        //            //Se llama al store procedure
-        //            SqlCommand cmd = new SqlCommand("usp_deposito", conn);
-        //            cmd.CommandType = CommandType.StoredProcedure;
-        //            cmd.Parameters.Add(new SqlParameter("@idusuario", paramss.idusuario));
-        //            cmd.Parameters.Add(new SqlParameter("@dinero", paramss.dinero));
-
-        //            //Ejecuta el SP
-        //            using (SqlDataReader rdr = cmd.ExecuteReader())
-        //            {
-        //                while (rdr.Read())
-        //                {
-        //                    var result = new ResponseUsuario();
-        //                    result.response = Convert.ToString(rdr["response"]);
-        //                    lista.Add(result);
-        //                }
-        //            }
-        //        }
-        //        return lista;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
-
-        public List<ResponseUsuario> getRetiro(ENTransaccion paramss)
+        public ResponseUsuario getRetiro(ENTransaccion paramss)
         {
             try
             {
@@ -182,7 +147,7 @@ namespace CajaAhorro.DATOS
                         }
                     }
                 }
-                return lista;
+                return lista.FirstOrDefault();
             }
             catch (Exception ex)
             {

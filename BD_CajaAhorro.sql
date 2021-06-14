@@ -9,7 +9,7 @@
 --disponible decimal(18,2));
 
 
---CREATE TABLE dtproceso(idproceso int identity(1,1) primary key, idcuenta int, fecha datetime, monto decimal(18,2), tipo nchar(20), mensaje nchar(200), descripcion varchar(max))
+CREATE TABLE dtproceso(idproceso int identity(1,1) primary key, idcuenta int, fecha datetime, monto decimal(18,2), tipo nchar(20), mensaje nchar(200), descripcion varchar(max))
 
 --CREATE TABLE dtprestamo(idprestamo int identity(1,1) primary key, idcuenta int, interes decimal(18,2), cantidad decimal(18,2), deuda decimal(18,2), finicion datetime, ffin datetime)
 

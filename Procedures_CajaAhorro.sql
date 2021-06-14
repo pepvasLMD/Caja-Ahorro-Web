@@ -28,83 +28,85 @@
 
 /****************************** DEPOSITAR *********************************************/
 
---CREATE PROCEDURE usp_deposito(@idusuario int, @dinero decimal(18,2))
---AS
---BEGIN
---	IF EXISTS(SELECT * FROM dtcuenta WHERE idusuario = @idusuario)
---	BEGIN
---		DECLARE @idcuenta int
+ALTER PROCEDURE usp_deposito(@idusuario int, @dinero decimal(18,2))
+AS
+BEGIN
+	IF EXISTS(SELECT * FROM dtcuenta WHERE idusuario = @idusuario)
+	BEGIN
+		DECLARE @idcuenta int
 
---		SET @idcuenta = (SELECT idcuenta from dtcuenta where idusuario = @idusuario)
+		SET @idcuenta = (SELECT idcuenta from dtcuenta where idusuario = @idusuario)
 
---		IF @dinero > 0
---		BEGIN
---			UPDATE dtcuenta SET dinero = (dinero+@dinero), disponible = (disponible + @dinero) WHERE idusuario = @idusuario
---			INSERT INTO dtproceso values(@idcuenta, GETDATE(), @dinero, 'Deposito', 'SUCCESS', 'El deposito se hizo correctamente')
---			SELECT 'ok' response
---		END
---		ELSE
---		BEGIN
---			INSERT INTO dtproceso values(@idcuenta, GETDATE(), @dinero, 'Deposito', 'ERROR', 'El dinero a depositar debe ser mayor a 0')
---			select 'El monto a insertar debe ser mayor a 0' response
---		END
---	END
---	ELSE
---	BEGIN
---		SELECT 'No se pudo realizar el depósito' response
---	END
---END
+		IF @dinero > 0
+		BEGIN
+			UPDATE dtcuenta SET dinero = (dinero+@dinero), disponible = (disponible + @dinero) WHERE idusuario = @idusuario
+			INSERT INTO dtproceso values(@idcuenta, GETDATE(), @dinero, 'Deposito', 'SUCCESS', 'El deposito se hizo correctamente')
+			SELECT 'ok' response
+		END
+		ELSE
+		BEGIN
+			INSERT INTO dtproceso values(@idcuenta, GETDATE(), @dinero, 'Deposito', 'ERROR', 'El dinero a depositar debe ser mayor a 0')
+			select 'El monto a insertar debe ser mayor a 0' response
+		END
+	END
+	ELSE
+	BEGIN
+		SELECT 'No se pudo realizar el depósito' response
+	END
+END
+
+
 
 /****************************** RETIRAR *********************************************/
 
---CREATE PROCEDURE usp_retiro(@idusuario int, @dinero decimal(18,2))
---AS
---BEGIN
---	IF EXISTS(SELECT * FROM dtcuenta WHERE @idusuario = idusuario)
---	BEGIN
---		IF EXISTS(SELECT * FROM dtcuenta where @idusuario = idusuario AND disponible >= @dinero)
---		BEGIN
+ALTER PROCEDURE usp_retiro(@idusuario int, @dinero decimal(18,2))
+AS
+BEGIN
+	IF EXISTS(SELECT * FROM dtcuenta WHERE @idusuario = idusuario)
+	BEGIN
+		IF EXISTS(SELECT * FROM dtcuenta where @idusuario = idusuario AND disponible >= @dinero)
+		BEGIN
 	
---			DECLARE @idcuenta int
---			DECLARE @dinero_disponible decimal(18,2)
+			DECLARE @idcuenta int
+			DECLARE @dinero_disponible decimal(18,2)
 
---			SET @idcuenta = (SELECT idcuenta from dtcuenta where idusuario = @idusuario)
+			SET @idcuenta = (SELECT idcuenta from dtcuenta where idusuario = @idusuario)
 
---			SET @dinero_disponible = (select (select sum(monto) as retiro from dtproceso where mensaje = 'SUCCESS' and tipo <> 'Retiro' ) - 
---											   (select ISNULL(sum(monto), 0) as retiro from dtproceso where mensaje = 'SUCCESS' and tipo = 'Retiro') - 
---											   (select ISNULL(sum(monto), 0) as retiro from dtproceso where mensaje = 'SUCCESS' and tipo = 'Prestamo'))
+			SET @dinero_disponible = (select (select sum(monto) as retiro from dtproceso where mensaje = 'SUCCESS' and tipo <> 'Retiro' ) - 
+											   (select ISNULL(sum(monto), 0) as retiro from dtproceso where mensaje = 'SUCCESS' and tipo = 'Retiro') - 
+											   (select ISNULL(sum(monto), 0) as retiro from dtproceso where mensaje = 'SUCCESS' and tipo = 'Prestamo'))
 
---			IF (@dinero_disponible - @dinero) >= 0
---			BEGIN
---				IF @dinero > 0
---				BEGIN
---					UPDATE dtcuenta SET dinero = (dinero-@dinero), disponible = (disponible-@dinero) WHERE idusuario = @idusuario
---					INSERT INTO dtproceso values(@idcuenta, GETDATE(), @dinero, 'Retiro', 'SUCCESS', 'El retiro se realizo correctamente')
---					SELECT 'ok' response
---				END
---				ELSE
---				BEGIN
---					INSERT INTO dtproceso values(@idcuenta, GETDATE(), @dinero, 'Retiro', 'ERROR', 'El dinero a retirar debe ser mayor a 0')
---					select 'El monto a insertar debe ser mayor a 0' response
---				END
---			END
---			ELSE
---			BEGIN
---				INSERT INTO dtproceso values(@idcuenta, GETDATE(), @dinero, 'Retiro', 'ERROR', 'No hay dinero suficiente en la caja')
---				SELECT 'No hay dinero suficiente en la caja' response
---			END
---		END
---		ELSE
---		BEGIN
---			INSERT INTO dtproceso values(@idcuenta, GETDATE(), @dinero, 'Retiro', 'ERROR', 'No tienes disponible el dinero solicitado')
---			SELECT 'No dispones del efectivo suficiente' response
---		END
---	END
---	ELSE
---	BEGIN
---		SELECT 'No se pudo realizar el retiro' response
---	END
---END
+			IF (@dinero_disponible - @dinero) >= 0
+			BEGIN
+				IF @dinero > 0
+				BEGIN
+					UPDATE dtcuenta SET dinero = (dinero-@dinero), disponible = (disponible-@dinero) WHERE idusuario = @idusuario
+					INSERT INTO dtproceso values(@idcuenta, GETDATE(), @dinero, 'Retiro', 'SUCCESS', 'El retiro se realizo correctamente')
+					SELECT 'ok' response
+				END
+				ELSE
+				BEGIN
+					INSERT INTO dtproceso values(@idcuenta, GETDATE(), @dinero, 'Retiro', 'ERROR', 'El dinero a retirar debe ser mayor a 0')
+					select 'El monto a insertar debe ser mayor a 0' response
+				END
+			END
+			ELSE
+			BEGIN
+				INSERT INTO dtproceso values(@idcuenta, GETDATE(), @dinero, 'Retiro', 'ERROR', 'No hay dinero suficiente en la caja')
+				SELECT 'No hay dinero suficiente en la caja' response
+			END
+		END
+		ELSE
+		BEGIN
+			INSERT INTO dtproceso values(@idcuenta, GETDATE(), @dinero, 'Retiro', 'ERROR', 'No tienes disponible el dinero solicitado')
+			SELECT 'No dispones del efectivo suficiente' response
+		END
+	END
+	ELSE
+	BEGIN
+		SELECT 'No se pudo realizar el retiro' response
+	END
+END
 
 /****************************** ALTA USUARIO *********************************************/
 
@@ -302,3 +304,25 @@ BEGIN
 END
 
 usp_listarProcesosUsuario 1
+
+/********************************** LISTAR PROCESOS USUARIO ******************************/
+
+usp_validarAccesos 'Cesar73','Inspiron5520?'
+
+ALTER PROCEDURE usp_validarAccesos(
+@user nchar(50),
+@password varchar(max)
+)
+AS
+BEGIN
+	IF EXISTS(SELECT * FROM dtusuarios WHERE nombre = @user AND password = @password)
+	BEGIN
+		SELECT 'ok' response, LTRIM(RTRIM(idusuario)) iduser, LTRIM(RTRIM(nombre)) username, LTRIM(RTRIM(tipo)) tipo
+		FROM dtusuarios
+		WHERE nombre = @user AND password = @password
+	END
+	ELSE
+	BEGIN
+		SELECT 'Usuario o contraseña incorrectos' response, '' username, '' tipo
+	END
+END

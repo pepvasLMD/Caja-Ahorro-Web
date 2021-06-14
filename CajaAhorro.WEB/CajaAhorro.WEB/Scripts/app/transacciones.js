@@ -109,8 +109,6 @@ $("#btndeposito").on("click", function () {
             }
 
         })
-
-
     }
 })
 
@@ -125,19 +123,48 @@ $("#txtdeposito").keyup(function () {
  ***/
 
 $("#btnretiro").on("click", function () {
-    let cantidaddeposito = $("#txtretiro").val();
+    let cantidadretiro = $("#txtretiro").val();
 
-    if (cantidaddeposito == "") {
+    if (cantidadretiro == "") {
         $("#msjretiro").html("Este campo no debe estar vacío").css("color", "RED");
         $("#txtretiro").css("border-color", "red");
         $("#txtretiro").focus();
-    } else if (parseFloat(cantidaddeposito) <= 0) {
+    } else if (parseFloat(cantidadretiro) <= 0) {
         $("#msjretiro").html("La cantidad debe ser mayor a $0").css("color", "RED");
         $("#txtretiro").css("border-color", "red");
         $("#txtretiro").focus();
     } else {
 
+        let params = new Object();
+        params.dinero = cantidadretiro;
 
+        Post("Transacciones/retiro", params).done(function (datos) {
+
+            if (datos.dt.response == "ok") {
+                swal({
+                    position: 'top-end',
+                    type: 'success',
+                    title: "Retiro realizado correctamente",
+                    text: 'Se retiró la cantidad de su cuenta',
+                    showConfirmButton: true,
+                    timer: 60000,
+                    confirmButtonText: 'Cerrar'
+                }, function () {
+                    window.location = fnBaseURLWeb("Transacciones/Transacciones");
+                })
+            } else {
+                swal({
+                    position: 'top-end',
+                    type: 'error',
+                    title: datos.dt.response,
+                    text: 'por favor valide lo solicitado',
+                    showConfirmButton: true,
+                    timer: 60000,
+                    confirmButtonText: 'Cerrar'
+                })
+            }
+
+        })
 
     }
 })
