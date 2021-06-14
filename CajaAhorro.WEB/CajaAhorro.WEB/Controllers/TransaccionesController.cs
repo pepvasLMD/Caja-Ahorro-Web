@@ -1,4 +1,7 @@
-﻿using CajaAhorro.WEB.Helpers;
+﻿using CajaAhorro.BUSINESS;
+using CajaAhorro.ENTITY.Parametros;
+using CajaAhorro.WEB.Helpers;
+using CajaAhorro.WEB.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +12,13 @@ namespace CajaAhorro.WEB.Controllers
 {
     public class TransaccionesController : Controller
     {
-        // GET: Transacciones
+        private BUUsuario buUsuario;
+        private modelList model;
+
+        public TransaccionesController()
+        {
+            buUsuario = new BUUsuario();
+        }
         public ActionResult Transacciones()
         {
             return View();
@@ -30,6 +39,17 @@ namespace CajaAhorro.WEB.Controllers
                 var respuesta = "error";
                 return Json(new { dt = respuesta });                
             }
+        }
+
+        [HttpPost]
+        public ActionResult deposito(ENUsuario paramss)
+        {
+            var session = Session.GetCurrentUser();
+            var token = session.responsetoken;
+            paramss.idusuario = session.iduser;
+
+            var respuesta = buUsuario.deposito(paramss, token);
+            return Json(new { dt = respuesta });
         }
     }
 }

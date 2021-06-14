@@ -13,5 +13,6 @@ namespace CajaAhorro.ENTITY.Response
 
         public string username { get; set; }
         public string tipo { get; set; }
+        public int iduser { get; set; }
     }
 }

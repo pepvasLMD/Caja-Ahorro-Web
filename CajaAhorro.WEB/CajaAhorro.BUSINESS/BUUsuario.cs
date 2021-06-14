@@ -31,5 +31,17 @@ namespace CajaAhorro.BUSINESS
             }
         }
 
+        public ResponseUsuario deposito(ENUsuario paramss,string token)
+        {
+            try
+            {
+                return JsonConvert.DeserializeObject<ResponseUsuario>(clients.Post<ENUsuario>("Usuario/deposito", paramss,token));
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
     }
 }

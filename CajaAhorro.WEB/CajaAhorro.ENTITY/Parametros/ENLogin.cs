@@ -16,5 +16,7 @@ namespace CajaAhorro.ENTITY.Parametros
         public string usertoken { get; set; } = "cesar_7391@outlook.com";
         public string passwordtoken { get; set; } = "Inspiron5520?";
 
+        public string iduser { get; set; }
+
     }
 }

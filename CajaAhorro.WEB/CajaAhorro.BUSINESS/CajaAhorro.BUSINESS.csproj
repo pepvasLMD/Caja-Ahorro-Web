@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="BULogin.cs" />
     <Compile Include="BUPais.cs" />
+    <Compile Include="BUTransacciones.cs" />
     <Compile Include="BUUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

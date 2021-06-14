@@ -70,9 +70,10 @@ namespace CajaAhorro.DATOS
                         while (rdr.Read())
                         {
                             var result = new ResponseLogin();
+                            result.iduser = Convert.ToInt32(rdr["iduser"]);
                             result.response = Convert.ToString(rdr["response"]);
                             result.username = Convert.ToString(rdr["username"]);
-                            result.tipo = Convert.ToString(rdr["tipo"]);
+                            result.tipo = Convert.ToString(rdr["tipo"]);                            
 
                             lista.Add(result);
                         }
